@@ -1,7 +1,7 @@
 package com.mateo.trip_tracker_api.service;
 
 import com.mateo.trip_tracker_api.api.model.ExpenseCategory;
-import com.mateo.trip_tracker_api.exception.RepositoryAccessException;
+import com.mateo.trip_tracker_api.exception.DatabaseFetchingException;
 import com.mateo.trip_tracker_api.repository.ExpenseCategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,6 +31,6 @@ public class ExpenseCategoryService {
     public void deleteExpenseCategoryById(Long id){
         if(expenseCategoryRepository.existsById(id)){
             expenseCategoryRepository.deleteById(id);
-        }else throw new RepositoryAccessException("Expense category not found");
+        }else throw new DatabaseFetchingException("Expense category not found");
     }
 }
