@@ -28,6 +28,12 @@ public class ExpenseCategoryService {
         return expenseCategoryRepository.save(expenseCategory);
     }
 
+    public ExpenseCategory updateExpenseCategory(ExpenseCategory expenseCategory){
+        if(expenseCategoryRepository.existsById(expenseCategory.getId())){
+            return expenseCategoryRepository.save(expenseCategory);
+        } else throw new DatabaseFetchingException("Expense category not found");
+    }
+
     public void deleteExpenseCategoryById(Long id){
         if(expenseCategoryRepository.existsById(id)){
             expenseCategoryRepository.deleteById(id);

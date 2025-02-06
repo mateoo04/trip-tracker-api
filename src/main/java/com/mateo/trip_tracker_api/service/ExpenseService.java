@@ -1,6 +1,5 @@
 package com.mateo.trip_tracker_api.service;
 
-import com.mateo.trip_tracker_api.api.model.Employee;
 import com.mateo.trip_tracker_api.api.model.Expense;
 import com.mateo.trip_tracker_api.api.model.ExpenseCategory;
 import com.mateo.trip_tracker_api.api.model.TravelLog;
@@ -42,6 +41,12 @@ public class ExpenseService {
         return expenseRepository.save(expense);
     }
 
+    public Expense updateExpense(Expense expense){
+        if(expenseRepository.existsById(expense.getId())){
+            return expenseRepository.save(expense);
+        }else throw new DatabaseFetchingException("Expense not found");
+    }
+    
     public void deleteExpenseById(Long id){
         if(expenseRepository.existsById(id)){
             expenseRepository.deleteById(id);

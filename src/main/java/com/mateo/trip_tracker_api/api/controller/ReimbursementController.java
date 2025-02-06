@@ -30,6 +30,11 @@ public class ReimbursementController {
         return ResponseEntity.ok(reimbursementService.saveReimbursement(reimbursement));
     }
 
+    @PutMapping
+    public ResponseEntity<Reimbursement> updateReimbursement(@RequestBody Reimbursement reimbursement) {
+        return ResponseEntity.ok(reimbursementService.updateReimbursement(reimbursement));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteReimbursement(@PathVariable Long id) {
         reimbursementService.deleteReimbursementById(id);

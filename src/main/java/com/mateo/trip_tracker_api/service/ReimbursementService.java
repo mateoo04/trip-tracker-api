@@ -32,6 +32,12 @@ public class ReimbursementService {
         return reimbursementRepository.save(reimbursement);
     }
 
+    public Reimbursement updateReimbursement(Reimbursement reimbursement){
+        if(reimbursementRepository.existsById(reimbursement.getId())){
+            return reimbursementRepository.save(reimbursement);
+        }else throw new DatabaseFetchingException("Reimbursement not found");
+    }
+
     public void deleteReimbursementById(Long id) {
         if(reimbursementRepository.existsById(id)) {
             reimbursementRepository.deleteById(id);

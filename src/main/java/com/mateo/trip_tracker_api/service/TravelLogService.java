@@ -33,6 +33,12 @@ public class TravelLogService {
         return travelLogRepository.save(travelLog);
     }
 
+    public TravelLog updateTravelLog(TravelLog travelLog){
+        if(travelLogRepository.existsById(travelLog.getId())){
+            return travelLogRepository.save(travelLog);
+        }else throw new DatabaseFetchingException("TravelLog not found");
+    }
+
     public void deleteTravelLogById(Long id){
         if(travelLogRepository.existsById(id)){
             travelLogRepository.deleteById(id);

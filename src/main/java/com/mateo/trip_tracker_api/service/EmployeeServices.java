@@ -28,6 +28,12 @@ public class EmployeeServices {
         return employeeRepository.save(employee);
     }
 
+    public Employee updateEmployee(Employee employee){
+        if(employeeRepository.existsById(employee.getId())){
+            return employeeRepository.save(employee);
+        }else throw new DatabaseFetchingException("Employee not found");
+    }
+
     public void deleteEmployeeById(Long id){
         if(employeeRepository.existsById(id)){
             employeeRepository.deleteById(id);

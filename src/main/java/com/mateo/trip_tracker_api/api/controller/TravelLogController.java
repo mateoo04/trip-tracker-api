@@ -30,6 +30,11 @@ public class TravelLogController {
         return ResponseEntity.ok(travelLogService.saveTravelLog(travelLog));
     }
 
+    @PutMapping
+    public ResponseEntity<TravelLog> updateTravelLog(@RequestBody TravelLog travelLog) {
+        return ResponseEntity.ok(travelLogService.updateTravelLog(travelLog));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTravelLog(@PathVariable Long id) {
         travelLogService.deleteTravelLogById(id);

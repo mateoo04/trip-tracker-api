@@ -30,6 +30,11 @@ public class ExpenseCategoryController {
         return ResponseEntity.ok(expenseCategoryService.saveExpenseCategory(expenseCategory));
     }
 
+    @PutMapping
+    public ResponseEntity<ExpenseCategory> updateExpenseCategory(@RequestBody ExpenseCategory expenseCategory) {
+        return ResponseEntity.ok(expenseCategoryService.updateExpenseCategory(expenseCategory));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteExpenseCategory(@PathVariable Long id) {
         expenseCategoryService.deleteExpenseCategoryById(id);
