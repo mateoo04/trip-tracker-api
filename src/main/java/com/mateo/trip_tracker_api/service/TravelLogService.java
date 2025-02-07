@@ -44,4 +44,12 @@ public class TravelLogService {
             travelLogRepository.deleteById(id);
         }else throw new DatabaseFetchingException("Travel log not found");
     }
+
+    public void deleteTravelLogsByEmployeeId(Long employeeId){
+        /*travelLogRepository.findAll().stream()
+                .filter(travelLog -> travelLog.getEmployee().getId().equals(employeeId))
+                .forEach(travelLog -> travelLogRepository.deleteById(travelLog.getId()));*/
+
+        travelLogRepository.deleteAll(travelLogRepository.findTravelLogsByEmployeeId(employeeId));
+    }
 }

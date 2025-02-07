@@ -1,8 +1,12 @@
 package com.mateo.trip_tracker_api.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mateo.trip_tracker_api.api.enums.Department;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -26,4 +30,8 @@ public class Employee {
 
     @Column(nullable = false)
     private String email;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TravelLog> travelLogs = new ArrayList<>();
 }

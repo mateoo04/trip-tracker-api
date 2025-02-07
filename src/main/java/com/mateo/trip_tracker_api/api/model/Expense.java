@@ -1,10 +1,13 @@
 package com.mateo.trip_tracker_api.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -29,4 +32,8 @@ public class Expense {
 
     @Column(nullable = false)
     private LocalDate date;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "expense", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reimbursement> reimbursements = new ArrayList<>();
 }
