@@ -10,6 +10,7 @@ import com.mateo.trip_tracker_api.repository.TravelLogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,5 +52,9 @@ public class ExpenseService {
         if(expenseRepository.existsById(id)){
             expenseRepository.deleteById(id);
         }else throw new DatabaseFetchingException("Expense not found");
+    }
+
+    public BigDecimal getTotalAmount(){
+        return expenseRepository.getTotalAmount();
     }
 }

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -22,6 +23,11 @@ public class ExpenseController {
     @GetMapping("/{id}")
     public ResponseEntity<Expense> getExpenseById(@PathVariable Long id) {
         return ResponseEntity.ok(expenseService.getExpenseById(id));
+    }
+
+    @GetMapping("/total-amount")
+    public ResponseEntity<BigDecimal> getTotalExpenseAmount() {
+        return ResponseEntity.ok(expenseService.getTotalAmount());
     }
 
     @PostMapping
