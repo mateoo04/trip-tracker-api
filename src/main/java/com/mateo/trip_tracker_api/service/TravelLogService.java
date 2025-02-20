@@ -46,10 +46,6 @@ public class TravelLogService {
     }
 
     public void deleteTravelLogsByEmployeeId(Long employeeId){
-        /*travelLogRepository.findAll().stream()
-                .filter(travelLog -> travelLog.getEmployee().getId().equals(employeeId))
-                .forEach(travelLog -> travelLogRepository.deleteById(travelLog.getId()));*/
-
         travelLogRepository.deleteAll(travelLogRepository.findTravelLogsByEmployeeId(employeeId));
     }
 }

@@ -1,6 +1,5 @@
 package com.mateo.trip_tracker_api.api.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mateo.trip_tracker_api.api.enums.TripStatus;
 import jakarta.persistence.*;
